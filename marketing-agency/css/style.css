@@ -1,0 +1,214 @@
+/* Reset e Configurações Básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Paleta de Cores */
+:root {
+    --primary-color: #2C3E50; /* Azul-marinho para cabeçalhos e títulos */
+    --secondary-color: #E67E22; /* Laranja para CTAs */
+    --highlight-color: #3498DB; /* Azul-claro para links e ícones */
+    --bg-light: #ECF0F1; /* Fundo claro */
+    --text-dark: #2C3E50; /* Texto principal */
+    --text-secondary: #7F8C8D; /* Cinza escuro para textos secundários */
+}
+
+/* Header e Navegação */
+header {
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--highlight-color);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--highlight-color));
+    color: white;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.hero h1 span {
+    display: block;
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    font-weight: 500;
+}
+
+/* Benefícios */
+.beneficios {
+    padding: 2rem;
+    background-color: var(--bg-light);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .beneficios {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Depoimentos */
+.depoimentos {
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+
+.depoimentos article {
+    margin-bottom: 1rem;
+}
+
+.depoimentos blockquote {
+    font-style: italic;
+    color: var(--highlight-color);
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    background: var(--secondary-color);
+    color: white;
+    padding: 2rem;
+    animation: pulse 3s infinite;
+}
+
+.cta a {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.cta a:hover {
+    transform: scale(1.1);
+    background-color: var(--highlight-color);
+}
+
+/* FAQ */
+dl {
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+dd {
+    margin-left: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Mini CTA */
+.mini-cta {
+    text-align: center;
+    background-color: var(--highlight-color);
+    color: white;
+    padding: 1rem;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+footer ul a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer address ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+footer address a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Animação de Pulse */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Botão de Tema Claro/Escuro */
+button.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
