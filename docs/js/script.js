@@ -1,21 +1,21 @@
 // Alternância entre Modo Claro e Escuro
 const toggleTheme = () => {
-    const currentTheme = document.body.getAttribute('data-theme');
+    const currentTheme = document.body.getAttribute('data-theme') || 'light';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.body.setAttribute('data-theme', newTheme);
 
-    // Alterar o ícone e texto do botão de acordo com o tema
-    themeToggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙 ';
+    // Alterar o texto e ícone do botão de tema
+    themeToggleBtn.textContent = newTheme === 'dark' ? '☀️ Modo Claro' : '🌙 Modo Escuro';
 };
 
-// Criar e Adicionar o Botão de Tema ao DOM
+// Criar e adicionar o botão de alternância de tema
 const themeToggleBtn = document.createElement('button');
 themeToggleBtn.classList.add('theme-toggle');
-themeToggleBtn.textContent = '🌙 '; // Padrão: claro
+themeToggleBtn.textContent = '🌙 Modo Escuro';
 document.body.appendChild(themeToggleBtn);
 themeToggleBtn.addEventListener('click', toggleTheme);
 
-// Scroll Suave ao Clicar nos Links da Navegação
+// Scroll Suave para Links de Navegação
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -27,7 +27,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
-// Efeito de Zoom no Hover dos Botões CTA
+// Efeito de Zoom no Hover dos CTAs
 document.querySelectorAll('.cta a, .botao-cta').forEach(cta => {
     cta.addEventListener('mouseenter', () => {
         cta.style.transform = 'scale(1.2)';
@@ -38,7 +38,7 @@ document.querySelectorAll('.cta a, .botao-cta').forEach(cta => {
     });
 });
 
-// Troca de Cores do Menu no Scroll (Adicionando Shadow)
+// Sombra Dinâmica no Header ao Rolar a Página
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if (window.scrollY > 50) {
@@ -48,3 +48,33 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Depoimentos - Slider Horizontal
+const slider = document.querySelector('.slider');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+});
+
+slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+});
+
+slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; // Aumentar a velocidade de rolagem
+    slider.scrollLeft = scrollLeft - walk;
+});

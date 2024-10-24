@@ -10,27 +10,28 @@ body {
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Paleta de Cores */
 :root {
-    --primary-color: #2C3E50; /* Azul-marinho para cabeçalhos e títulos */
-    --secondary-color: #E67E22; /* Laranja para CTAs */
-    --highlight-color: #3498DB; /* Azul-claro para links e ícones */
-    --bg-light: #ECF0F1; /* Fundo claro */
+    --primary-color: #2C3E50; /* Azul-marinho */
+    --secondary-color: #E67E22; /* Laranja */
+    --highlight-color: #3498DB; /* Azul-claro */
+    --bg-light: #ECF0F1; /* Branco-fumê */
     --text-dark: #2C3E50; /* Texto principal */
-    --text-secondary: #7F8C8D; /* Cinza escuro para textos secundários */
+    --text-secondary: #7F8C8D; /* Cinza para subtítulos */
 }
 
 /* Header e Navegação */
 header {
+    background-color: var(--primary-color);
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 nav ul {
     display: flex;
@@ -49,11 +50,6 @@ nav a {
 
 nav a:hover {
     color: var(--highlight-color);
-}
-
-a:focus, button:focus {
-    outline: 2px dashed var(--highlight-color);
-    outline-offset: 2px;
 }
 
 /* Hero Section */
@@ -82,43 +78,80 @@ a:focus, button:focus {
     font-weight: 500;
 }
 
-/* Benefícios */
+/* Benefícios - Cards */
 .beneficios {
-    padding: 2rem;
-    background-color: var(--bg-light);
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 2rem;
+    padding: 2rem;
     text-align: center;
 }
 
-@media (min-width: 768px) {
-    .beneficios {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
+.beneficio-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+ 
 }
 
-/* Depoimentos */
+.beneficio-card:hover {
+    transform: scale(1.05);
+}
+
+.beneficio-card i {
+    color: var(--secondary-color);
+}
+
+/* Carrossel de Depoimentos */
+
 .depoimentos {
+    text-align: center;
     padding: 2rem;
-    background-color: #f4f4f4;
+    position: relative;
 }
 
-.depoimentos article {
+.depoimentos h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+.slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.slide {
+    min-width: 300px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.slide:hover {
+    transform: scale(1.05);
+}
+
+.slide img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     margin-bottom: 1rem;
 }
 
-.depoimentos blockquote {
-    font-style: italic;
-    color: var(--highlight-color);
-}
-
-/* CTA */
+/* CTAs */
 .cta {
     text-align: center;
     background: var(--secondary-color);
@@ -190,27 +223,6 @@ footer ul a {
     font-weight: 600;
 }
 
-footer address ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 0.5rem;
-}
-
-footer address a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Animação de Pulse */
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-}
-
 /* Botão de Tema Claro/Escuro */
 button.theme-toggle {
     position: fixed;
@@ -224,4 +236,64 @@ button.theme-toggle {
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
+}
+
+/* Animação de Pulse */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .beneficios {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .slider {
+        justify-content: center;
+    }
+}
+
+.beneficios-titulo{
+    text-align: center;
+}
+
+/* FAQ Section */
+.faq {
+    background-color: var(--bg-light);
+    padding: 2rem;
+    text-align: center;
+}
+
+.faq h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.faq dl {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq dt {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: var(--text-dark);
+}
+
+.faq dd {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
 }
