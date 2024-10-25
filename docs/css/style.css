@@ -405,4 +405,105 @@ button.theme-toggle {
 .faq-item.active .faq-question i {
     transform: rotate(45deg); /* Altera o "+" para "x" */
 }
+/* Ajustes da Hero */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Alinha a Hero ao centro */
+    background: linear-gradient(45deg, #2C3E50, #3498DB);
+    color: #FFFFFF;
+    padding: 3rem;
+    min-height: 100vh;
+    overflow: hidden;
+    perspective: 1200px; /* Define a perspectiva 3D */
+}
+
+.hero-content {
+    max-width: 50%;
+    margin-right: 0;
+}
+
+.hero-image {
+    position: relative;
+    width: 50vw; /* Ocupa 50% da largura da tela */
+    height: auto; /* Mantém a proporção da imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d; /* Mantém o efeito 3D */
+}
+
+/* Imagem Central */
+.hero-image img {
+    width: 100%; /* Garante que a imagem preencha a hero */
+    height: auto;
+    max-width: 100%; /* Limita a largura máxima para grandes telas */
+    z-index: 1;
+}
+
+.orbit-wrapper {
+    position: absolute;
+    transform-style: preserve-3d;
+    transform: rotateX(15deg); /* Inclina o plano da órbita */
+}
+
+/* Orbit Container */
+.orbit {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    transform-style: preserve-3d; /* Ativa a profundidade 3D */
+    animation: rotate 10s linear infinite; /* Rotação contínua */
+   
+}
+
+/* Imagens Orbitantes */
+.orbit-image {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 30%;
+    object-fit: cover;
+    transform-origin: 50% 50% 0; /* Define o ponto de rotação em 3D */
+}
+
+/* Posições Orbitantes */
+.orbit-image:nth-child(1) { transform: rotateY(0deg) translateZ(200px); }
+.orbit-image:nth-child(2) { transform: rotateY(72deg) translateZ(200px); }
+.orbit-image:nth-child(3) { transform: rotateY(144deg) translateZ(200px); }
+.orbit-image:nth-child(4) { transform: rotateY(216deg) translateZ(200px); }
+.orbit-image:nth-child(5) { transform: rotateY(288deg) translateZ(200px); }
+
+/* Animação de Rotação */
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg); /* Início */
+    }
+    to {
+        transform: rotateY(360deg); /* Rotação Completa */
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-right: 0;
+    }
+
+    .orbit {
+        width: 350px;
+        height: 350px;
+    }
+
+    .orbit-image {
+        width: 60px;
+        height: 60px;
+    }
+}
 
