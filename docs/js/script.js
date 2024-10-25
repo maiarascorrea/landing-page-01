@@ -48,36 +48,48 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Depoimentos - Slider Horizontal
+//Depoimentos
 const slider = document.querySelector('.slider');
-let isDown = false;
-let startX;
-let scrollLeft;
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 0;
+const slidesPerView = 2; // Exibe 2 slides por vez
+const totalSlides = Math.ceil(slider.children.length / slidesPerView); // Total de grupos de slides
 
-slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
+// Atualiza o carrossel para mostrar os slides corretos
+function updateCarousel(index) {
+    const slideWidth = slider.querySelector('.slide').offsetWidth + 16; // Largura do slide + gap
+    slider.style.transform = `translateX(-${index * slideWidth * slidesPerView}px)`;
+
+    // Atualiza a bolinha ativa
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index % dots.length].classList.add('active');
+}
+
+// Navegação manual com bolinhas
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel(currentIndex);
+    });
 });
 
-slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.classList.remove('active');
-});
+// Função para transição automática
+function autoSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides; // Volta ao início após o último grupo
+    updateCarousel(currentIndex);
+}
 
-slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('active');
-});
+// Inicia o carrossel automático a cada 3 segundos
+let slideInterval = setInterval(autoSlide, 3000);
 
-slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // Aumentar a velocidade de rolagem
-    slider.scrollLeft = scrollLeft - walk;
-});
+// Pausa o carrossel ao passar o mouse
+slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+slider.addEventListener('mouseleave', () => (slideInterval = setInterval(autoSlide, 3000)));
+
+// Ajusta o carrossel ao redimensionar a janela
+window.addEventListener('resize', () => updateCarousel(currentIndex));
+
+
 // Seleciona todas as perguntas do FAQ
 const faqItems = document.querySelectorAll('.faq-item');
 
@@ -94,3 +106,19 @@ faqItems.forEach(item => {
         item.classList.toggle('active');
     });
 });
+
+// Função para detectar quando os elementos entram na tela
+function handleScroll() {
+    const cards = document.querySelectorAll('.fade-in');
+    cards.forEach(card => {
+        const cardPosition = card.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+
+        if (cardPosition < screenPosition) {
+            card.classList.add('show');
+        }
+    });
+}
+
+// Adiciona o evento de scroll
+window.addEventListener('scroll', handleScroll);

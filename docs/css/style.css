@@ -153,36 +153,119 @@ nav a:hover {
 
 /* Benefícios - Cards */
 .beneficios {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem;
+    padding: 6rem 2rem; /* Aumenta o padding vertical */
+    background-color: var(--bg-light);
     text-align: center;
+    min-height: 100vh; /* Garante que ocupe pelo menos 100% da altura da tela */
+    position: relative;
 }
 
+/* Cabeçalho da Seção de Benefícios */
+.beneficios-header {
+    margin-bottom: 3rem;
+}
+
+.beneficios-titulo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.beneficios-descricao {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.beneficios-separador {
+    width: 100px;
+    height: 4px;
+    background-color: var(--highlight-color);
+    margin: 0 auto 3rem;
+    /* border-radius: 2px;
+    border: none; */
+}
+
+/* Benefícios Container */
+.beneficios-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Cartões de Benefícios */
 .beneficio-card {
     display: flex;
     align-items: center;
-    background-color: var(--bg-light);
-    border-radius: 8px;
-    padding: 1rem;
     gap: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
- 
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 150px;
+    opacity: 0; /* Invisível inicialmente */
+    transform: translateY(30px); /* Posição inicial */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0); /* Volta à posição original */
 }
 
 .beneficio-card:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .beneficio-card i {
     color: var(--secondary-color);
 }
 
+/* Animação de Entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Separação Visual */
+.beneficios::after {
+    content: "";
+    display: block;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--bg-light));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .beneficios-container {
+        grid-template-columns: 1fr;
+    }
+
+    .beneficio-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+
 /* Carrossel de Depoimentos */
 
-.depoimentos {
+/* .depoimentos {
     text-align: center;
     padding: 2rem;
     position: relative;
@@ -222,7 +305,78 @@ nav a:hover {
     height: 80px;
     border-radius: 50%;
     margin-bottom: 1rem;
+} */
+
+
+/* Depoimentos - Estilo do Carrossel */
+/* Depoimentos */
+.depoimentos {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--bg-light);
 }
+
+.depoimentos h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+/* Container do Carrossel */
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+}
+
+/* Slider */
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Transição suave */
+    gap: 1rem;
+}
+
+/* Slide */
+.slide {
+    min-width: calc(50% - 1rem); /* Dois slides por vez */
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Imagem do Cliente */
+.slide img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+/* Paginação - Bolinhas */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: var(--highlight-color);
+}
+
 
 /* CTAs */
 .cta {

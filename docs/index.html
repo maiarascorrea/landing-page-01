@@ -13,6 +13,8 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;600;700&display=swap"
             rel="stylesheet">
 
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=monitoring" />
     </head>
 
     <body>
@@ -43,8 +45,8 @@
                     <div class="hero-cta">
                         <a href="#orcamento" class="btn btn-primary">Solicitar
                             um Orçamento</a>
-                        <a href="#exemplos" class="btn btn-secondary">Ver
-                            Exemplos</a>
+                        <!-- <a href="#exemplos" class="btn btn-secondary">Ver
+                            Exemplos</a> -->
                     </div>
                 </div>
 
@@ -53,15 +55,15 @@
                         alt="Ilustração de produtividade no computador">
                     <div class="orbit-wrapper">
                         <div class="orbit">
-                            <img src="images/img1.png" alt="Imagem 1"
+                            <img src="img/img1.png" alt="Imagem 1"
                                 class="orbit-image">
-                            <img src="images/img2.png" alt="Imagem 2"
+                            <img src="img/img2.png" alt="Imagem 2"
                                 class="orbit-image">
-                            <img src="images/img3.png" alt="Imagem 3"
+                            <img src="img/img3.png" alt="Imagem 3"
                                 class="orbit-image">
-                            <img src="images/img4.png" alt="Imagem 4"
+                            <img src="img/img4.png" alt="Imagem 4"
                                 class="orbit-image">
-                            <img src="images/img5.png" alt="Imagem 5"
+                            <img src="img/img5.png" alt="Imagem 5"
                                 class="orbit-image">
                         </div>
                     </div>
@@ -70,27 +72,33 @@
 
             <!-- Seção de Benefícios -->
             <section id="servicos" class="beneficios">
-                <div>
+                <div class="beneficios-header">
                     <h3 class="beneficios-titulo">Benefícios</h3>
+                    <p class="beneficios-descricao">
+                        Maximize seus resultados com soluções projetadas para
+                        aumentar
+                        conversões e otimizar seu negócio.
+                    </p>
+                    <hr class="beneficios-separador">
                 </div>
-                <div>
-                    <div class="beneficio-card">
+
+                <div class="beneficios-container">
+                    <div class="beneficio-card fade-in">
                         <i class="fas fa-chart-line fa-2x"></i>
                         <p>Aumente suas conversões em <strong>30%</strong> com
                             design focado em performance.</p>
                     </div>
-                    <div class="beneficio-card">
+                    <div class="beneficio-card fade-in">
                         <i class="fas fa-users fa-2x"></i>
                         <p>Capture leads com eficiência através de CTAs
                             estratégicos.</p>
                     </div>
-                    <div class="beneficio-card">
+                    <div class="beneficio-card fade-in">
                         <i class="fas fa-search fa-2x"></i>
                         <p>Melhore sua visibilidade online com copywriting
-                            otimizado
-                            para SEO.</p>
+                            otimizado para SEO.</p>
                     </div>
-                    <div class="beneficio-card">
+                    <div class="beneficio-card fade-in">
                         <i class="fas fa-clock fa-2x"></i>
                         <p>Entrega rápida sem abrir mão da excelência.</p>
                     </div>
@@ -100,34 +108,63 @@
             <!-- Depoimentos (Carrossel) -->
             <section id="depoimentos" class="depoimentos">
                 <h3>O que nossos clientes dizem</h3>
-                <div class="slider">
-                    <div class="slide">
-                        <img src="./img/lucas.jpg" alt="Foto de Lucas">
-                        <p><strong>Lucas M.</strong> – E-commerce de Moda</p>
-                        <blockquote>“Depois de contratar o serviço, dobramos
-                            nossa captação de leads em menos de 30
-                            dias!”</blockquote>
+                <div class="carousel-container">
+                    <div class="slider">
+                        <div class="slide">
+                            <img src="./img/lucas.jpg" alt="Foto de Lucas">
+                            <p><strong>Lucas M.</strong> – E-commerce de
+                                Moda</p>
+                            <blockquote>“Depois de contratar o serviço, dobramos
+                                nossa captação de leads em menos de 30
+                                dias!”</blockquote>
+                        </div>
+                        <div class="slide">
+                            <img src="./img/lucas.jpg" alt="Foto de Lucas">
+                            <p><strong>Mateus M.</strong> – E-commerce de
+                                Moda</p>
+                            <blockquote>“Depois de contratar o serviço, dobramos
+                                nossa captação de leads em menos de 30
+                                dias!”</blockquote>
+                        </div>
+
+                        <div class="slide">
+                            <img src="./img/carla-t.jpg" alt="Foto de Carla">
+                            <p><strong>Carla T.</strong> – Coach de Negócios</p>
+                            <blockquote>“A página ficou perfeita! A comunicação
+                                clara e estratégica trouxe mais clientes em
+                                menos
+                                tempo.”</blockquote>
+                        </div>
+                        <div class="slide">
+                            <img src="./img/lucas.jpg" alt="Foto de Lucas">
+                            <p><strong>Jorge M.</strong> – E-commerce de
+                                Moda</p>
+                            <blockquote>“Depois de contratar o serviço, dobramos
+                                nossa captação de leads em menos de 30
+                                dias!”</blockquote>
+                        </div>
+                        <div class="slide">
+                            <img src="./img/lucas.jpg" alt="Foto de Lucas">
+                            <p><strong>Lucas M.</strong> – E-commerce de
+                                Moda</p>
+                            <blockquote>“Depois de contratar o serviço, dobramos
+                                nossa captação de leads em menos de 30
+                                dias!”</blockquote>
+                        </div>
+                        <div class="slide">
+                            <img src="./img/carla-t.jpg" alt="Foto de Carla">
+                            <p><strong>Carla T.</strong> – Coach de Negócios</p>
+                            <blockquote>“A página ficou perfeita! A comunicação
+                                clara e estratégica trouxe mais clientes em
+                                menos
+                                tempo.”</blockquote>
+                        </div>
                     </div>
-                    <div class="slide">
-                        <img src="./img/carla-t.jpg" alt="Foto de Carla">
-                        <p><strong>Carla T.</strong> – Coach de Negócios</p>
-                        <blockquote>“A página ficou perfeita! A comunicação
-                            clara e estratégica trouxe mais clientes em menos
-                            tempo.”</blockquote>
-                    </div>
-                    <div class="slide">
-                        <img src="./img/carla-t.jpg" alt="Foto de Carla">
-                        <p><strong>Carla T.</strong> – Coach de Negócios</p>
-                        <blockquote>“A página ficou perfeita! A comunicação
-                            clara e estratégica trouxe mais clientes em menos
-                            tempo.”</blockquote>
-                    </div>
-                    <div class="slide">
-                        <img src="./img/carla-t.jpg" alt="Foto de Carla">
-                        <p><strong>Carla T.</strong> – Coach de Negócios</p>
-                        <blockquote>“A página ficou perfeita! A comunicação
-                            clara e estratégica trouxe mais clientes em menos
-                            tempo.”</blockquote>
+                    <div class="pagination">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+
                     </div>
                 </div>
             </section>
@@ -137,12 +174,14 @@
                 <h3>Perguntas Frequentes</h3>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Quanto tempo leva para minha landing page ficar
+                        <span>Quanto tempo leva para minha landing page
+                            ficar
                             pronta?</span>
                         <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>O tempo médio de entrega é de 5 a 7 dias úteis.</p>
+                        <p>O tempo médio de entrega é de 5 a 7 dias
+                            úteis.</p>
                     </div>
                 </div>
 
@@ -163,8 +202,10 @@
                         <i class="fas fa-plus"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>Realizamos uma consultoria inicial e, com base nas
-                            suas necessidades, desenvolvemos a landing page sob
+                        <p>Realizamos uma consultoria inicial e, com base
+                            nas
+                            suas necessidades, desenvolvemos a landing page
+                            sob
                             medida.</p>
                     </div>
                 </div>
