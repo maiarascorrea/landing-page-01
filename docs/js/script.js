@@ -78,3 +78,19 @@ slider.addEventListener('mousemove', (e) => {
     const walk = (x - startX) * 2; // Aumentar a velocidade de rolagem
     slider.scrollLeft = scrollLeft - walk;
 });
+// Seleciona todas as perguntas do FAQ
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const questionButton = item.querySelector('.faq-question');
+
+    questionButton.addEventListener('click', () => {
+        // Fecha todas as outras respostas abertas
+        faqItems.forEach(i => {
+            if (i !== item) i.classList.remove('active');
+        });
+
+        // Alterna o estado ativo do item atual
+        item.classList.toggle('active');
+    });
+});
