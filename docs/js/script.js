@@ -50,45 +50,53 @@ window.addEventListener('scroll', () => {
 
 //Depoimentos
 const slider = document.querySelector('.slider');
-const dots = document.querySelectorAll('.dot');
 let currentIndex = 0;
-const slidesPerView = 2; // Exibe 2 slides por vez
-const totalSlides = Math.ceil(slider.children.length / slidesPerView); // Total de grupos de slides
+const totalSlides = slider.children.length;
+const slidesPerView = 2; // Mostrar dois slides por vez
 
-// Atualiza o carrossel para mostrar os slides corretos
-function updateCarousel(index) {
-    const slideWidth = slider.querySelector('.slide').offsetWidth + 16; // Largura do slide + gap
-    slider.style.transform = `translateX(-${index * slideWidth * slidesPerView}px)`;
-
-    // Atualiza a bolinha ativa
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[index % dots.length].classList.add('active');
+// Função para atualizar o carrossel
+function updateSlider() {
+    const slideWidth = slider.children[0].offsetWidth + 16; // Inclui o gap
+    const newTransform = -(currentIndex * slideWidth);
+    slider.style.transform = `translateX(${newTransform}px)`;
 }
 
-// Navegação manual com bolinhas
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentIndex = index;
-        updateCarousel(currentIndex);
-    });
+// Navegação automática entre slides
+function autoSlide() {
+    // Calcula o próximo índice corretamente
+    currentIndex = (currentIndex + 1) % Math.ceil(totalSlides / slidesPerView);
+    updateSlider();
+}
+
+// Intervalo de troca automática a cada 3 segundos
+setInterval(autoSlide, 3000);
+
+// Suporte para navegação manual
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
 });
 
-// Função para transição automática
-function autoSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides; // Volta ao início após o último grupo
-    updateCarousel(currentIndex);
-}
+slider.addEventListener('mouseleave', () => {
+    isDown = false;
+});
 
-// Inicia o carrossel automático a cada 3 segundos
-let slideInterval = setInterval(autoSlide, 3000);
+slider.addEventListener('mouseup', () => {
+    isDown = false;
+});
 
-// Pausa o carrossel ao passar o mouse
-slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-slider.addEventListener('mouseleave', () => (slideInterval = setInterval(autoSlide, 3000)));
-
-// Ajusta o carrossel ao redimensionar a janela
-window.addEventListener('resize', () => updateCarousel(currentIndex));
-
+slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; // Ajusta a velocidade de rolagem
+    slider.scrollLeft = scrollLeft - walk;
+});
 
 // Seleciona todas as perguntas do FAQ
 const faqItems = document.querySelectorAll('.faq-item');

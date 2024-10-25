@@ -265,7 +265,7 @@ nav a:hover {
 
 /* Carrossel de Depoimentos */
 
-/* .depoimentos {
+.depoimentos {
     text-align: center;
     padding: 2rem;
     position: relative;
@@ -280,14 +280,20 @@ nav a:hover {
 }
 .slider {
     display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    transition: transform 0.5s ease-in-out;
     gap: 1rem;
-    padding: 2rem;
+    padding: 1rem 0;
+}
+
+
+/* Wrapper para manter a estrutura */
+.slider-wrapper {
+    overflow: hidden; /* Esconde a rolagem */
+    width: 100%; /* Garante que o slider ocupe toda a largura */
 }
 
 .slide {
-    min-width: 300px;
+    min-width: calc(50% - 1rem); /* Dois slides por vez */
     background-color: var(--bg-light);
     border-radius: 8px;
     padding: 1rem;
@@ -295,6 +301,7 @@ nav a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
+
 
 .slide:hover {
     transform: scale(1.05);
@@ -308,74 +315,8 @@ nav a:hover {
 } */
 
 
-/* Depoimentos - Estilo do Carrossel */
-/* Depoimentos */
-.depoimentos {
-    text-align: center;
-    padding: 3rem 2rem;
-    background-color: var(--bg-light);
-}
+/* Depoimentos - Estilo do Carrossel
 
-.depoimentos h3 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: var(--primary-color);
-}
-
-/* Container do Carrossel */
-.carousel-container {
-    overflow: hidden;
-    position: relative;
-    max-width: 100%;
-}
-
-/* Slider */
-.slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out; /* Transição suave */
-    gap: 1rem;
-}
-
-/* Slide */
-.slide {
-    min-width: calc(50% - 1rem); /* Dois slides por vez */
-    background-color: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* Imagem do Cliente */
-.slide img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-}
-
-/* Paginação - Bolinhas */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    background-color: var(--text-secondary);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.dot.active {
-    background-color: var(--highlight-color);
-}
 
 
 /* CTAs */
